@@ -60,6 +60,14 @@ Node RewriteRule<RewriteRuleKind::BV_ADD_ITE2>::_apply(Rewriter& rewriter,
 template <>
 Node RewriteRule<RewriteRuleKind::BV_ADD_SHL>::_apply(Rewriter& rewriter,
                                                       const Node& node);
+// not_one_add
+template <>
+Node RewriteRule<RewriteRuleKind::BV_ADD_NOT_ONE>::_apply(Rewriter& rewriter,
+                                                          const Node& node);
+// shl_neg_add
+template <>
+Node RewriteRule<RewriteRuleKind::BV_ADD_SHL_NEG>::_apply(Rewriter& rewriter,
+                                                          const Node& node);
 
 /* bvand -------------------------------------------------------------------- */
 

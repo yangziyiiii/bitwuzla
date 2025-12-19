@@ -429,6 +429,8 @@ enum class RewriteRuleKind
   BV_ADD_ITE2,
   BV_ADD_SHL,
   BV_ADD_NEG_MUL,
+  BV_ADD_NOT_ONE,
+  BV_ADD_SHL_NEG,
   // normalization
   NORM_BV_ADD_MUL,
   NORM_BV_ADD_CONCAT,

@@ -1128,6 +1128,8 @@ Rewriter::rewrite_bv_add(const Node& node)
     BZLA_APPLY_RW_RULE(BV_ADD_NOT);
     BZLA_APPLY_RW_RULE(BV_ADD_NEG);
     BZLA_APPLY_RW_RULE(BV_ADD_UREM);
+    BZLA_APPLY_RW_RULE(BV_ADD_NOT_ONE);
+    BZLA_APPLY_RW_RULE(BV_ADD_SHL_NEG);
   }
   if (d_level >= 2)
   {
@@ -2027,6 +2029,8 @@ operator<<(std::ostream& out, RewriteRuleKind kind)
     CASE(BV_ADD_ITE2);
     CASE(BV_ADD_SHL);
     CASE(BV_ADD_NEG_MUL);
+    CASE(BV_ADD_NOT_ONE);
+    CASE(BV_ADD_SHL_NEG);
     CASE(NORM_BV_ADD_MUL);
     CASE(NORM_BV_ADD_CONCAT);
     CASE(BV_AND_SPECIAL_CONST);

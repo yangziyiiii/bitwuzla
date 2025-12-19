@@ -10,6 +10,8 @@
 
 #include "rewrite/rewrites_bv.h"
 
+#include <iostream>
+
 #include "bv/bitvector.h"
 #include "node/node_kind.h"
 #include "node/node_manager.h"
@@ -465,6 +467,58 @@ RewriteRule<RewriteRuleKind::BV_ADD_NEG_MUL>::_apply(Rewriter& rewriter,
     res = _rw_bv_add_neg_mul(rewriter, node, 1);
   }
   return res;
+}
+
+/**
+ * match:  (bvadd (bvnot a) 1) or (bvadd 1 (bvnot a))
+ * result: (bvneg a)
+ */
+template <>
+Node
+RewriteRule<RewriteRuleKind::BV_ADD_NOT_ONE>::_apply(Rewriter& rewriter,
+                                                     const Node& node)
+{
+  assert(node.num_children() == 2);
+  if (node[0].is_inverted() && node[1].is_value() && node[1].value<BitVector>().is_one())
+  {
+    return rewriter.mk_node(Kind::BV_NEG, {node[0][0]});
+  }
+  if (node[1].is_inverted() && node[0].is_value() && node[0].value<BitVector>().is_one())
+  {
+    return rewriter.mk_node(Kind::BV_NEG, {node[1][0]});
+  }
+  return node;
+}
+
+/**
+ * match:  (bvadd (bvshl a 1) (bvneg a)) or (bvadd (bvneg a) (bvshl a 1))
+ * result: a
+ */
+template <>
+Node
+RewriteRule<RewriteRuleKind::BV_ADD_SHL_NEG>::_apply(Rewriter& rewriter,
+                                                     const Node& node)
+{
+  assert(node.num_children() == 2);
+  Node shl, neg;
+  if (node[0].kind() == Kind::BV_SHL && rewriter.is_bv_neg(node[1], neg))
+  {
+    shl = node[0];
+  }
+  else if (node[1].kind() == Kind::BV_SHL && rewriter.is_bv_neg(node[0], neg))
+  {
+    shl = node[1];
+  }
+  else
+  {
+    return node;
+  }
+
+  if (shl[0] == neg && shl[1].is_value() && shl[1].value<BitVector>().is_one())
+  {
+    return neg;
+  }
+  return node;
 }
 
 /* bvand -------------------------------------------------------------------- */
@@ -1211,6 +1265,21 @@ RewriteRule<RewriteRuleKind::BV_CONCAT_EXTRACT>::_apply(Rewriter& rewriter,
         Kind::BV_EXTRACT, {node0[0]}, {node0.index(0), node1.index(1)});
     return inverted ? rewriter.invert_node(res) : res;
   }
+
+  if (!inverted && node0.kind() == Kind::BV_EXTRACT && node1.is_value()
+      && node1.value<BitVector>().is_zero())
+  {
+    uint64_t n = node0[0].type().bv_size();
+    uint64_t k = node1.type().bv_size();
+    // std::cout << "Checking BV_CONCAT_EXTRACT rule: n=" << n << " k=" << k << " idx0=" << node0.index(0) << " idx1=" << node0.index(1) << std::endl;
+    if (node0.index(1) == 0 && node0.index(0) == n - k - 1)
+    {
+      return rewriter.mk_node(
+          Kind::BV_SHL,
+          {node0[0], rewriter.nm().mk_value(BitVector::from_ui(n, k))});
+    }
+  }
+
   return node;
 }
 
@@ -2017,11 +2086,11 @@ RewriteRule<RewriteRuleKind::BV_SHL_CONST>::_apply(Rewriter& rewriter,
     {
       return rewriter.nm().mk_value(BitVector::mk_zero(size));
     }
-    uint64_t uishift = shift.to_uint64(false);
-    return rewriter.mk_node(
-        Kind::BV_CONCAT,
-        {rewriter.mk_node(Kind::BV_EXTRACT, {node[0]}, {size - uishift - 1, 0}),
-         rewriter.nm().mk_value(BitVector::mk_zero(uishift))});
+    // uint64_t uishift = shift.to_uint64(false);
+    // return rewriter.mk_node(
+    //     Kind::BV_CONCAT,
+    //     {rewriter.mk_node(Kind::BV_EXTRACT, {node[0]}, {size - uishift - 1, 0}),
+    //      rewriter.nm().mk_value(BitVector::mk_zero(uishift))});
   }
   return node;
 }

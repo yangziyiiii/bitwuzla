@@ -633,7 +633,7 @@ PassVariableSubstitution::apply(AssertionVector& assertions)
       {
         new_substs.emplace(var, term_processed);
         subst_index.emplace(var, i);
-        Log(2) << "Add substitution: " << var << " -> " << term_processed;
+        Log(1) << "VS: Add substitution: " << var << " -> " << term_processed;
       }
     }
     Log(1) << "Found " << new_substs.size() << " new substitutions";

@@ -10,6 +10,9 @@
 
 #include "preprocess/pass/embedded_constraints.h"
 
+#include <iostream>
+
+#include "bv/bitvector.h"
 #include "env.h"
 #include "node/node_manager.h"
 
@@ -57,6 +60,34 @@ PassEmbeddedConstraints::apply(AssertionVector& assertions)
       assert(!assertion.is_variable());
       n_substs += 1;
       d_substitutions.emplace(assertion, nm.mk_value(true));
+
+      Node eq_node = assertion;
+      if (assertion.kind() == Kind::EQUAL)
+      {
+        if (assertion[1].is_value() && assertion[1].value<BitVector>().is_one()
+            && assertion[0].kind() == Kind::EQUAL)
+        {
+          eq_node = assertion[0];
+        }
+        else if (assertion[0].is_value()
+                 && assertion[0].value<BitVector>().is_one()
+                 && assertion[1].kind() == Kind::EQUAL)
+        {
+          eq_node = assertion[1];
+        }
+      }
+
+      if (eq_node.kind() == Kind::EQUAL)
+      {
+        if (eq_node[0].is_const() && eq_node[1].is_value())
+        {
+          d_substitutions.emplace(eq_node[0], eq_node[1]);
+        }
+        else if (eq_node[1].is_const() && eq_node[0].is_value())
+        {
+          d_substitutions.emplace(eq_node[1], eq_node[0]);
+        }
+      }
     }
   }
   Log(1) << "Found " << n_substs << " new substitutions";
