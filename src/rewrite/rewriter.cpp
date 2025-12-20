@@ -1128,7 +1128,7 @@ Rewriter::rewrite_bv_add(const Node& node)
     BZLA_APPLY_RW_RULE(BV_ADD_NOT);
     BZLA_APPLY_RW_RULE(BV_ADD_NEG);
     BZLA_APPLY_RW_RULE(BV_ADD_UREM);
-    BZLA_APPLY_RW_RULE(BV_ADD_NOT_ONE);
+    // BZLA_APPLY_RW_RULE(BV_ADD_NOT_ONE);
     BZLA_APPLY_RW_RULE(BV_ADD_SHL_NEG);
   }
   if (d_level >= 2)

@@ -10,8 +10,6 @@
 
 #include "rewrite/rewrites_bv.h"
 
-#include <iostream>
-
 #include "bv/bitvector.h"
 #include "node/node_kind.h"
 #include "node/node_manager.h"
@@ -481,11 +479,11 @@ RewriteRule<RewriteRuleKind::BV_ADD_NOT_ONE>::_apply(Rewriter& rewriter,
   assert(node.num_children() == 2);
   if (node[0].is_inverted() && node[1].is_value() && node[1].value<BitVector>().is_one())
   {
-    return rewriter.mk_node(Kind::BV_NEG, {node[0][0]});
+    return rewriter.mk_node(Kind::BV_NEG, {rewriter.invert_node(node[0])});
   }
   if (node[1].is_inverted() && node[0].is_value() && node[0].value<BitVector>().is_one())
   {
-    return rewriter.mk_node(Kind::BV_NEG, {node[1][0]});
+    return rewriter.mk_node(Kind::BV_NEG, {rewriter.invert_node(node[1])});
   }
   return node;
 }

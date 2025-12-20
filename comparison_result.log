@@ -1,0 +1,164 @@
+python run_benchmark.py                                                                                                                                          
+Start Benchmarking...                                                                                                                                              
+Benchmark Dir: /data/ziyi/data2/ziyi/bzla-agent/smt-comp25/20250315-BMC_WMM                                                                                        
+Total Files: 21                                                                                                                                                    
+Max Workers: 10                                                                                                                                                    
+Timeout: 1200s                                                                                                                                                     
+------------------------------------------------------------                                                                                                       
+[1/21] dartagnan-1696544255.ll.smt2 -> MATCH                                                                                                                       
+   Time: bzla-official=2.9143s | bzla-ziyi=3.3075s                                                                                                                 
+----------------------------------------                                                                                                                           
+[2/21] dartagnan-3859612464.ll.smt2 -> MATCH
+   Time: bzla-official=0.0334s | bzla-ziyi=0.0959s
+---------------------------------------- 
+[3/21] dartagnan-2423550726.ll.smt2 -> MATCH
+   Time: bzla-official=4.3449s | bzla-ziyi=4.5159s
+---------------------------------------- 
+[4/21] dartagnan-3631839658.ll.smt2 -> MATCH
+   Time: bzla-official=6.8699s | bzla-ziyi=7.0261s
+---------------------------------------- 
+[5/21] dartagnan-388975420.ll.smt2 -> MATCH
+   Time: bzla-official=9.6443s | bzla-ziyi=9.99s
+---------------------------------------- 
+[6/21] dartagnan-392731133.ll.smt2 -> MATCH
+   Time: bzla-official=9.5053s | bzla-ziyi=9.1264s
+---------------------------------------- 
+[7/21] dartagnan-2164133234.ll.smt2 -> MATCH
+   Time: bzla-official=15.2381s | bzla-ziyi=15.7921s
+---------------------------------------- 
+[8/21] dartagnan-2076516653.ll.smt2 -> MATCH
+   Time: bzla-official=15.7895s | bzla-ziyi=15.298s
+---------------------------------------- 
+[9/21] dartagnan-531947466.ll.smt2 -> MATCH
+   Time: bzla-official=0.5079s | bzla-ziyi=0.5081s
+---------------------------------------- 
+[10/21] dartagnan-1307236424.ll.smt2 -> MATCH
+   Time: bzla-official=17.0337s | bzla-ziyi=17.1368s
+---------------------------------------- 
+[11/21] dartagnan-3186294248.ll.smt2 -> MATCH
+   Time: bzla-official=19.7871s | bzla-ziyi=20.4457s
+---------------------------------------- 
+[12/21] dartagnan-4231602519.ll.smt2 -> MATCH
+   Time: bzla-official=8.2405s | bzla-ziyi=8.0973s
+---------------------------------------- 
+[13/21] dartagnan-872089424.ll.smt2 -> MATCH
+   Time: bzla-official=3.3524s | bzla-ziyi=3.548s
+---------------------------------------- 
+[14/21] dartagnan-4174597278.ll.smt2 -> MATCH
+   Time: bzla-official=17.9617s | bzla-ziyi=20.4408s
+---------------------------------------- 
+[15/21] dartagnan-4270820484.ll.smt2 -> MATCH
+   Time: bzla-official=18.7491s | bzla-ziyi=19.969s
+----------------------------------------
+[16/21] dartagnan-620475457.ll.smt2 -> MISMATCH
+   Time: bzla-official=12.560s | bzla-ziyi=13.892s
+----------------------------------------
+[17/21] dartagnan-808371303.ll.smt2 -> MATCH
+   Time: bzla-official=21.1182s | bzla-ziyi=21.1876s
+----------------------------------------
+[18/21] dartagnan-3159534389.ll.smt2 -> MATCH
+   Time: bzla-official=419.3967s | bzla-ziyi=391.5084s
+----------------------------------------
+[19/21] dartagnan-355804860.ll.smt2 -> MATCH
+   Time: bzla-official=456.3322s | bzla-ziyi=395.9624s
+----------------------------------------
+[20/21] dartagnan-2905688035.ll.smt2 -> MATCH
+   Time: bzla-official=655.3609s | bzla-ziyi=569.1789s
+----------------------------------------
+[21/21] dartagnan-617244361.ll.smt2 -> MATCH
+   Time: bzla-official=807.1012s | bzla-ziyi=616.1919s
+----------------------------------------
+
+Benchmark Finished! Results saved to comparison_result.csv
+Summary:
+  Total: 21
+  Matches (Pass): 21
+  Mismatches (Fail): 0
+  Timeouts: 0y:
+  Total: 21
+  Matches (Pass): 21
+  Mismatches (Fail): 0
+  Timeouts: 0
+
+
+  [95mStart Benchmarking...[0m
+Benchmark Dir: /data/ziyi/data2/ziyi/bzla-agent/smt-comp25/20250315-BMC_WMM
+Total Files: 21
+Max Workers: 10
+Timeout: 1200s
+------------------------------------------------------------
+[1/21] dartagnan-1696544255.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=2.4951s | bzla-ziyi=2.6681s
+----------------------------------------
+[2/21] dartagnan-3859612464.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=0.0341s | bzla-ziyi=0.0329s
+----------------------------------------
+[3/21] dartagnan-2423550726.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=3.8443s | bzla-ziyi=3.7464s
+----------------------------------------
+[4/21] dartagnan-3631839658.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=5.6759s | bzla-ziyi=5.6536s
+----------------------------------------
+[5/21] dartagnan-388975420.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=8.2715s | bzla-ziyi=8.3257s
+----------------------------------------
+[6/21] dartagnan-392731133.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=7.6466s | bzla-ziyi=7.8535s
+----------------------------------------
+[7/21] dartagnan-2164133234.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=12.7591s | bzla-ziyi=12.9326s
+----------------------------------------
+[8/21] dartagnan-531947466.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=0.4506s | bzla-ziyi=0.447s
+----------------------------------------
+[9/21] dartagnan-2076516653.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=13.7809s | bzla-ziyi=13.6971s
+----------------------------------------
+[10/21] dartagnan-1307236424.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=14.8836s | bzla-ziyi=15.2798s
+----------------------------------------
+[11/21] dartagnan-4231602519.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=6.7415s | bzla-ziyi=7.0477s
+----------------------------------------
+[12/21] dartagnan-3186294248.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=18.2228s | bzla-ziyi=18.3129s
+----------------------------------------
+[13/21] dartagnan-872089424.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=2.9115s | bzla-ziyi=3.0134s
+----------------------------------------
+[14/21] dartagnan-4174597278.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=15.8236s | bzla-ziyi=16.0026s
+----------------------------------------
+[15/21] dartagnan-4270820484.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=16.3995s | bzla-ziyi=15.6482s
+----------------------------------------
+[16/21] dartagnan-620475457.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=15.3238s | bzla-ziyi=15.24s
+----------------------------------------
+[17/21] dartagnan-808371303.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=20.4993s | bzla-ziyi=17.7948s
+----------------------------------------
+[18/21] dartagnan-3159534389.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=344.1135s | bzla-ziyi=326.1211s
+----------------------------------------
+[19/21] dartagnan-355804860.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=356.3863s | bzla-ziyi=341.4054s
+----------------------------------------
+[20/21] dartagnan-2905688035.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=539.87s | bzla-ziyi=473.9421s
+----------------------------------------
+[21/21] dartagnan-617244361.ll.smt2 -> [92mMATCH[0m
+   Time: bzla-official=663.381s | bzla-ziyi=583.3556s
+----------------------------------------
+
+[95mBenchmark Finished! Results saved to comparison_result.csv[0m
+Summary:
+  Total: 21
+  [92mMatches (Pass): 21[0m
+  [91mMismatches (Fail): 0[0m
+  [93mTimeouts: 0[0m
+y:
+  Total: 21
+  Matches (Pass): 21
+  Mismatches (Fail): 0
+  Timeouts: 0
