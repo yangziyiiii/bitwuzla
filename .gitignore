@@ -6,3 +6,4 @@ build/
 subprojects/*
 !/subprojects/packagefiles
 !subprojects/*.wrap
+smt-comp25/*
